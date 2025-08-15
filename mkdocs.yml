@@ -1,0 +1,85 @@
+site_name: Vick's Wiki
+theme:
+  name: material    
+
+  font:
+    text: Geogia
+  icon:
+    favicon: material/pen
+    logo: material/pen
+  features:
+    - content.code.copy # 启动复制按钮
+    - header.autohide
+    - navigation.tabs
+    - content.footnote.tooltips
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - 首页: index.md
+  - Basic:
+    - 运算优先级: Note/Basic/运算优先级.md
+  - Data Structure:
+    - 并查集: Note/Data_structure/并查集.md
+    - 字典树: Note/Data_structure/字典树.md
+  - DP:
+    - 背包: Note/DP/背包.md
+    - 最长公共子序列: Note/DP/最长公共子序列.md
+  - Graph:
+    - Types of Graph: 
+      - DAG: Note/Graph/Types of Graph/DAG.md
+    - 拓扑排序: Note/Graph/拓扑排序.md
+  - Search:
+    - BFS: Note/Search/BFS.md
+    - 双向搜索: Note/Search/双向搜索.md
+  - Tree:
+    - 最近公共祖先: Note/Tree/最近公共祖先.md
+  - Imput & Output:
+    - 快读: Note/Imput&Output/快读.md
+  - 指南: guides.md
+  - 关于: about.md
+
+plugins:           
+  # - Search
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true  # 启用通用数学模式
+  - pymdownx.highlight:
+      linenums: true       # 显示行号
+      anchor_linenums: false # 行号可点击
+      pygments_style: solarized-dark # Pygments 主题
+  - pymdownx.inlinehilite   # 行内代码高亮
+  - pymdownx.superfences   # 支持嵌套代码块[3,5](@ref)
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - footnotes
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js  # MathJax 3
+  - https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js
+  - js/math.js
