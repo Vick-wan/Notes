@@ -46,6 +46,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../styles/github.css">
+    
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
@@ -170,6 +172,8 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -1034,6 +1038,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#meet-in-the-middle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meet in the middle
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1304,6 +1317,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#meet-in-the-middle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meet in the middle
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1334,14 +1356,21 @@
 <p>总结发现在写 <code>BFS</code> 时，不能直接从起点或终点出发，否则会遇到上面两种情况，会导致 <code>TLE</code>。</p>
 <p>所以使用双向搜索来优化 <code>BFS</code>，这个用法是在优化 <code>BFS</code> 时可能要使用的，实现是从两侧展开分枝，哪边分枝少就从哪边展开。</p>
 <h3 id="code">Code</h3>
-<p>下面是使用了双向搜索优化的 <code>BFS</code> 代码：
-```cpp</p>
-<h1 id="include">include <bits/stdc++.h></h1>
-<p>using namespace std;</p>
-<p>int main() {</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>return 0;
+<p>下面是使用了双向搜索优化的 <code>BFS</code> 代码：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>}</p>
 <h2 id="meet-in-the-middle">Meet in the middle</h2>
 
 
@@ -1362,6 +1391,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -1391,7 +1426,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "header.autohide", "navigation.tabs", "content.footnote.tooltips"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "header.autohide", "navigation.tabs", "navigation.top", "toc.follow", "content.footnote.tooltips", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
