@@ -1,6 +1,7 @@
 site_name: Vick's Wiki
 theme:
-  name: material    
+  name: material  
+  language: en
 
   font:
     text: Geogia
@@ -11,7 +12,11 @@ theme:
     - content.code.copy # 启动复制按钮
     - header.autohide
     - navigation.tabs
+    - navigation.top
+    - toc.follow
     - content.footnote.tooltips
+    - search.suggest
+    - search.highlight
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -53,6 +58,11 @@ nav:
   - 指南: guides.md
   - 关于: about.md
 
+hide:
+  - navigation
+  - toc
+  - footer
+
 plugins:           
   # - Search
 
@@ -61,8 +71,8 @@ markdown_extensions:
       generic: true  # 启用通用数学模式
   - pymdownx.highlight:
       linenums: true       # 显示行号
-      anchor_linenums: false # 行号可点击
-      pygments_style: solarized-dark # Pygments 主题
+  #     anchor_linenums: false # 行号可点击
+      # pygments_style: solarized-dark # Pygments 主题
   - pymdownx.inlinehilite   # 行内代码高亮
   - pymdownx.superfences   # 支持嵌套代码块[3,5](@ref)
   - pymdownx.critic
@@ -74,7 +84,18 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - footnotes
+
+# extra:
+#   alternate:
+#     - name: English
+#       link: /en/
+#       lang: en
+#     - name: Chinese(Simplified)
+#       link: /zh/
+#       lang: zh
+
 extra_css:
+  - styles/github.css
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
 
 extra_javascript:
