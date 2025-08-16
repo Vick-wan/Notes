@@ -93,7 +93,7 @@
     <a href="../../.." title="Vick&#39;s Wiki" class="md-header__button md-logo" aria-label="Vick's Wiki" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 22a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-6v7L9.5 7.5 7 9V2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -439,7 +439,7 @@
     <a href="../../.." title="Vick&#39;s Wiki" class="md-nav__button md-logo" aria-label="Vick's Wiki" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 22a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-6v7L9.5 7.5 7 9V2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"/></svg>
 
     </a>
     Vick's Wiki
@@ -1426,7 +1426,7 @@
 <h2 id="_1">思路</h2>
 <p>求最长公共子序列我们可以像 <span class="arithmatex">\(\rm DP\)</span> 一样考虑每一种情况。假设现在有两个字符串，<span class="arithmatex">\(a\)</span> 和 <span class="arithmatex">\(b\)</span>。假设当前枚举到了 <span class="arithmatex">\(a\)</span> 的第 <span class="arithmatex">\(i\)</span> 位和 <span class="arithmatex">\(b\)</span> 的第 <span class="arithmatex">\(j\)</span> 位。</p>
 <p>我们可以定义一个状态：<span class="arithmatex">\(dp_{i, j}\)</span> 代表当前进行到字符串 <span class="arithmatex">\(a\)</span> 的第 <span class="arithmatex">\(i\)</span> 位，和字符串 <span class="arithmatex">\(b\)</span> 的第 <span class="arithmatex">\(j\)</span> 位时的最长公共子序列。 </p>
-<p>那么我们发现就有两种情况：<span class="arithmatex">\(a_i == b_j\)</span> 和 <span class="arithmatex">\(a_i != b_j\)</span>，我们就可以分别讨论了：</p>
+<p>那么我们发现就有两种情况：<span class="arithmatex">\(a_i == b_j\)</span> 和 <span class="arithmatex">\(a_i \not = b_j\)</span>，我们就可以分别讨论了：</p>
 <ol>
 <li>
 <p><span class="arithmatex">\(a_i == b_j\)</span></p>
