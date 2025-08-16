@@ -6,8 +6,8 @@ theme:
   font:
     text: Geogia
   icon:
-    favicon: material/pen
-    logo: material/pen
+    favicon: material/book
+    logo: material/book
   features:
     - content.code.copy # 启动复制按钮
     - header.autohide
