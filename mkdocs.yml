@@ -3,8 +3,6 @@ theme:
   name: material  
   language: en
 
-  font:
-    text: Geogia
   icon:
     favicon: material/book
     logo: material/book
@@ -13,6 +11,7 @@ theme:
     - header.autohide
     - navigation.tabs
     - navigation.top
+    - navigation.footer
     - toc.follow
     - content.footnote.tooltips
     - search.suggest
@@ -65,14 +64,15 @@ hide:
 
 plugins:           
   # - Search
+  # - privacy
 
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true  # 启用通用数学模式
   - pymdownx.highlight:
+      use_pygments: true
       linenums: true       # 显示行号
-  #     anchor_linenums: false # 行号可点击
-      # pygments_style: solarized-dark # Pygments 主题
+      pygments_style: monokai # Pygments 主题
   - pymdownx.inlinehilite   # 行内代码高亮
   - pymdownx.superfences   # 支持嵌套代码块[3,5](@ref)
   - pymdownx.critic
@@ -82,25 +82,46 @@ markdown_extensions:
   - pymdownx.tilde
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
   - footnotes
 
-# extra:
-#   alternate:
-#     - name: English
-#       link: /en/
-#       lang: en
-#     - name: Chinese(Simplified)
-#       link: /zh/
-#       lang: zh
+copyright: >
+  Copyright &copy; 2016 - 2024 Martin Donath –
+  <a href="#__consent">Change cookie settings</a>
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Vick-wan
+      
+  consent:
+    # title: Cookie consent
+    # description: >- 
+    #   We use cookies to recognize your repeated visits and preferences, as well
+    #   as to measure the effectiveness of our documentation and whether users
+    #   find what they're searching for. With your consent, you're helping us to
+    #   make our documentation better.
+
+    # cookies:
+    #   analytics: Costom name
+
+    # actions:
+    #   - accept all
+    #   - manage it
+
+  # alternate:
+  #   - name: English
+  #     link: /en/
+  #     lang: en
+  #   - name: Chinese(Simplified)
+  #     link: /zh/
+  #     lang: zh
 
 extra_css:
-  - styles/github.css
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js  # MathJax 3
   - https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js
-  - js/math.js
