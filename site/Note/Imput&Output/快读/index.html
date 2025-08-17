@@ -1380,12 +1380,33 @@
 <span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="k">nullptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// 解绑cin可以减少 cin 读取前的自动刷新 cout 缓冲区的开销。</span>
 <span class="n">cout</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="k">nullptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// ​解除 cout 与其他输出流的绑定(现在可能没什么用)</span>
 </code></pre></div></td></tr></table></div></p>
-<p>使用者三行的效果如下：
-| 代码 | 优化目标 | 性能提升场景 |
-| --- | --- | --- |
-| <code>ios::sync_with_stdio(false)</code> | 禁用 <code>C/C++ IO</code> 同步 | 高速 cin/cout（避免锁开销） |
-| <code>cin.tie(nullptr)</code> | 解除 cin 与 cout 绑定 | 减少不必要的缓冲区刷新 |
-| <code>cout.tie(nullptr)</code> | 兼容旧标准（现代无需） | 无实际影响 |</p>
+<p>使用者三行的效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>优化目标</th>
+<th>性能提升场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ios::sync_with_stdio(false)</code></td>
+<td>禁用 <code>C/C++ IO</code> 同步</td>
+<td>高速 cin/cout（避免锁开销）</td>
+</tr>
+<tr>
+<td><code>cin.tie(nullptr)</code></td>
+<td>解除 cin 与 cout 绑定</td>
+<td>减少不必要的缓冲区刷新</td>
+</tr>
+<tr>
+<td><code>cout.tie(nullptr)</code></td>
+<td>兼容旧标准（现代无需）</td>
+<td>无实际影响</td>
+</tr>
+</tbody>
+</table>
 <p><strong>请注意：</strong> 关同步后不可以让 <code>cin/cout</code> 和 <code>scanf/printf</code> 混用，否则会出现不可预知的错误。</p>
 
 
