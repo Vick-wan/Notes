@@ -1269,17 +1269,18 @@
   </form>
 
 <div class="giscus"></div>
+
 <script src="https://giscus.app/client.js"
         data-repo="Vick-wan/Notes"
         data-repo-id="R_kgDOPeOgTA"
-        data-category="General"
-        data-category-id="DIC_kwDOPeOgTM4CuQiU"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOPeOgTM4CuQiT"
         data-mapping="pathname"
         data-strict="0"
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="top"
-        data-theme="preferred_color_scheme"
+        data-theme="dark"
         data-lang="zh-CN"
         data-loading="lazy"
         crossorigin="anonymous"
@@ -1287,30 +1288,27 @@
 </script>
 
 <script>
-  // 监听页面的颜色模式切换
-  document.addEventListener("DOMContentLoaded", function () {
-    const giscusFrame = () => document.querySelector("iframe.giscus-frame");
+  function setGiscusTheme(theme) {
+    const iframe = document.querySelector("iframe.giscus-frame");
+    if (!iframe) return;
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: theme } } },
+      "https://giscus.app"
+    );
+  }
 
-    // 监听 mkdocs-material 的颜色模式切换
-    const callback = (mutationList) => {
-      for (const mutation of mutationList) {
-        if (mutation.type === "attributes" && mutation.attributeName === "data-md-color-scheme") {
-          const theme = document.documentElement.getAttribute("data-md-color-scheme") === "slate"
-            ? "dark"
-            : "light";
-
-          giscusFrame()?.contentWindow.postMessage(
-            { giscus: { setConfig: { theme: theme } } },
-            "https://giscus.app"
-          );
-        }
-      }
-    };
-
-    const observer = new MutationObserver(callback);
-    observer.observe(document.documentElement, { attributes: true });
+  // 初始加载时设置一次
+  document.addEventListener("DOMContentLoaded", () => {
+    const scheme = document.documentElement.getAttribute("data-md-color-scheme");
+    setGiscusTheme(scheme === "slate" ? "dark" : "light");
   });
-</script>
+
+  // 监听 mkdocs-material 主题切换事件
+  document.addEventListener("md-color-scheme", (event) => {
+    const newScheme = event.detail.scheme;
+    setGiscusTheme(newScheme === "slate" ? "dark" : "light");
+  });
+</script> -->
                 
               </article>
             </div>
