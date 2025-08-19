@@ -2,7 +2,7 @@ site_name: Vick's Wiki
 site_url: https://vick-wan.github.io/Notes/
 theme:
   name: material
-  # custom_dir: overrides
+  custom_dir: overrides
   language: en
 
   logo: assets/images/logo.png
