@@ -424,25 +424,6 @@
   
 
       
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../test/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  测试
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -1613,28 +1594,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../test/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    测试
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -2075,14 +2034,13 @@
 <p>这是最基础的背包问题，观察后发现每个物品要么选（1），要么不选（0），所以我们通常称这种题型为 01背包。</p>
 <h3 id="_2">思路</h3>
 <p>我们可以定义一个状态：<span class="arithmatex">\(dp_{i, j}\)</span> 代表前 <span class="arithmatex">\(i\)</span> 个物品选恰好重量为 <span class="arithmatex">\(j\)</span> 时，可以获得的最大价值。那么决策显然为两个：选或不选。如果选择装入当前物品，那么我们需要让背包腾出至少 <span class="arithmatex">\(c_i\)</span> 个容量用于装这个物品，而价值则加上这个物品的价值，即 <span class="arithmatex">\(v_i\)</span>。如果不选择装入当前物品，那么就是同样的空间装前 <span class="arithmatex">\(i - 1\)</span> 个物品。</p>
-<p>我们可以画一个表格来直接的理解：
-<img alt="image lost" src="../../../assets/images/knapsack1.png" /></p>
+<p>我们可以画一个表格来直接的理解：</p>
+<p><img alt="image lost" src="../../../assets/images/knapsack1.png" /></p>
 <p>通过整理和表格我们发现状态转移如下：
 $$
-dp[i][j] = \max \begin{cases}
-dp[i - 1][j]
-\newline
-dp[i - 1][j - c[i]] + v[i]
+dp_{i, j} = \max \begin{cases}
+dp_{i - 1, j} \newline
+dp_{i - 1, j - c_i} + v_i
 \end{cases}
 $$</p>
 <h3 id="code">Code</h3>
@@ -2127,18 +2085,18 @@ $$</p>
 </blockquote>
 <p>观察上面题目发现跟 01 背包有些区别，这次变成了有 <span class="arithmatex">\(W\)</span> 种，然后每种可以去任意个数。这种没有数量限制的题目我们统称为完全背包。</p>
 <h3 id="_9">思路</h3>
-<p>我们发现完全背包非常类似 01 背包。而不同的是，01 背包的决策是要或者不要，但是完全背包的决策是要 0 个， 要 1 个， <span class="arithmatex">\(\cdots\)</span>  要 <span class="arithmatex">\(\lfloor \frac{W}{c[i]} \rfloor\)</span> 个。具体来说就是要 <code>k</code> 个且 <span class="arithmatex">\(0 \le k \le \lfloor \frac{W}{c[i]} \rfloor\)</span> 。我们定义 <code>dp[i][j]</code> 代表前 <code>i</code> 个物品选恰好重量为 <code>j</code> 时，可以获得的最大价值。我们可以画出下面的表格来辅助我们理解转移：
-<img alt="image lost" src="../../../assets/images/knapsack2.png" /></p>
+<p>我们发现完全背包非常类似 01 背包。而不同的是，01 背包的决策是要或者不要，但是完全背包的决策是要 0 个， 要 1 个， <span class="arithmatex">\(\cdots\)</span>  要 <span class="arithmatex">\(\lfloor \frac{W}{c_i} \rfloor\)</span> 个。具体来说就是要 <code>k</code> 个且 <span class="arithmatex">\(0 \le k \le \lfloor \frac{W}{c_i} \rfloor\)</span> 。我们定义 <code>dp_{i, j}</code> 代表前 <code>i</code> 个物品选恰好重量为 <code>j</code> 时，可以获得的最大价值。我们可以画出下面的表格来辅助我们理解转移：</p>
+<p><img alt="image lost" src="../../../assets/images/knapsack2.png" /></p>
 <p>转移如下：
 $$
-dp[i][j] = \max \begin{cases} 
-dp[i-1][j] \newline
-dp[i][j - k \times c[i]] + k \times v[i]
+dp_{i, j} = \max \begin{cases} 
+dp_{i - 1, j} \newline
+dp_{i, j - k \times c_i} + k \times v_i
 \end{cases}
 \quad
 \begin{array}{l} 
-0 \leq k \leq \frac{W}{c[i]} \newline
-k \times c[i] \leq j 
+0 \leq k \leq \frac{W}{c_i} \newline
+k \times c_i \leq j 
 \end{array}
 $$</p>
 <h3 id="code_2">Code</h3>
@@ -2162,11 +2120,10 @@ $$</p>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div></p>
 <h3 id="_10">复杂度</h3>
-<p>时间复杂度为 <span class="arithmatex">\(O(N{W} ^ {2})\)</span>，是比较大的。空间复杂度为 <span class="arithmatex">\(O(NW)\)</span></p>
+<p>时间复杂度为 <span class="arithmatex">\(O(N{W} ^ {2})\)</span>。空间复杂度为 <span class="arithmatex">\(O(NW)\)</span></p>
 <h3 id="_11">优化</h3>
 <h4 id="_12">思路</h4>
-<p>先观察 01 背包和完全背包在二维下转移的区别，发现一个是可以从
- 01 背包滚动数组后需要倒序是为了保证 <span class="arithmatex">\(dp_i\)</span> 是从状态 <span class="arithmatex">\(dp_{i - 1, j - c_i}\)</span> 转移而来，而完全背包是可以从自己这一行转移过来，所以 <span class="arithmatex">\(for\)</span> 循环需要顺序写来保证可以从 <span class="arithmatex">\(dp_{i, j - k \ c_i}\)</span>  转移而来。</p>
+<p>先观察 01 背包和完全背包在二维下转移的区别，发现一个是可以从 01 背包滚动数组后需要倒序是为了保证 <span class="arithmatex">\(dp_i\)</span> 是从状态 <span class="arithmatex">\(dp_{i - 1, j - c_i}\)</span> 转移而来，而完全背包是可以从自己这一行转移过来，所以 <span class="arithmatex">\(for\)</span> 循环需要顺序写来保证可以从 <span class="arithmatex">\(dp_{i, j - k \ c_i}\)</span>  转移而来。</p>
 <h4 id="code_3">Code</h4>
 <p>下面是滚动数组后的完全背包：
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2189,11 +2146,11 @@ $$</p>
 </blockquote>
 <p>这次题目给定了 <span class="arithmatex">\(N\)</span> 中物品和每种物品可拿的数量，我们通常将这种类型的背包叫做<strong>多重背包</strong>。多重背包更完全背包的唯一区别就是完全背包的每种物品可拿无限个，而多重背包的每种物品有一个限制。</p>
 <h3 id="_15">思路</h3>
-<p>完全背包是通过枚举一个 <span class="arithmatex">\(k\)</span> 来表示拿 <span class="arithmatex">\(k\)</span> 个，而这个 <span class="arithmatex">\(k\)</span> 的上限是 <span class="arithmatex">\(\frac{W}{c[i]}\)</span>。而多重背包的上限题目已给出，即 <span class="arithmatex">\(m_i\)</span> 。所以转移就是完全背包的转移将  的上限替换为 <span class="arithmatex">\(m_i\)</span> 就可以了。</p>
+<p>完全背包是通过枚举一个 <span class="arithmatex">\(k\)</span> 来表示拿 <span class="arithmatex">\(k\)</span> 个，而这个 <span class="arithmatex">\(k\)</span> 的上限是 <span class="arithmatex">\(\frac{W}{c_i}\)</span>。而多重背包的上限题目已给出，即 <span class="arithmatex">\(m_i\)</span> 。所以转移就是完全背包的转移将  的上限替换为 <span class="arithmatex">\(m_i\)</span> 就可以了。</p>
 <div class="arithmatex">\[
-dp[i][j] = \max \begin{cases}
-dp[i - 1][j] \newline 
-dp[i][j - k \times c[i]] + k \times v[i]
+dp_{i, j} = \max \begin{cases}
+dp_{i - 1, j} \newline 
+dp_{i, j - k \times c_i} + k \times v_i
 \end{cases}
 \quad
 \begin{array}{l} 
@@ -2245,7 +2202,7 @@ k \times c[i] \leq j
 <p>我们通过二进制拆分，将<strong>物品数量限制</strong>转化为<strong>物品组合选择</strong>，从而将多重背包问题转化为01背包问题，来优化时间。</p>
 </blockquote>
 <h4 id="_18">思路</h4>
-<p>在枚举 <span class="arithmatex">\(k\)</span> 时，会发现枚举次数为 <span class="arithmatex">\(m_i\)</span> ，这非常慢。所以考虑把 <span class="arithmatex">\(k\)</span> 用若干个数的和表示出来， 然后使用 01 背包思路解决，而二进制刚好可以表示出来。所以我们尝试把 <span class="arithmatex">\(m_i\)</span> 件商品拆成若干个二的幂和一个剩余的数之和，这样 <span class="arithmatex">\(k\)</span> 就一定可以被表示出来，而且拆成的物品少，仅为 <span class="arithmatex">\(\lceil \log_{2}{m[i]} \rceil\)</span> 件。</p>
+<p>在枚举 <span class="arithmatex">\(k\)</span> 时，会发现枚举次数为 <span class="arithmatex">\(m_i\)</span> ，这非常慢。所以考虑把 <span class="arithmatex">\(k\)</span> 用若干个数的和表示出来， 然后使用 01 背包思路解决，而二进制刚好可以表示出来。所以我们尝试把 <span class="arithmatex">\(m_i\)</span> 件商品拆成若干个二的幂和一个剩余的数之和，这样 <span class="arithmatex">\(k\)</span> 就一定可以被表示出来，而且拆成的物品少，仅为 <span class="arithmatex">\(\lceil \log_{2}{m_i} \rceil\)</span> 件。</p>
 <p>所以我们将一个数拆成以下形式：</p>
 <p>$$
 2^0 + 2^1 + 2^2 + \cdots + 2^x + \text{Remain}
