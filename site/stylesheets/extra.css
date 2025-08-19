@@ -1,0 +1,7 @@
+.giscus-container {
+  max-width: var(--md-typeset-max-width);
+  margin: 2rem auto;
+  max-height: 600px;       /* 控制评论区高度 */
+  overflow-y: auto;        /* 超出内容滚动 */
+  padding: 1rem 0;
+}
