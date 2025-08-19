@@ -1,11 +1,13 @@
 site_name: Vick's Wiki
+site_url: https://vick-wan.github.io/Notes/
 theme:
-  name: material  
+  name: material
+  # custom_dir: overrides
   language: en
 
-  icon:
-    favicon: material/book
-    logo: material/book
+  logo: assets/images/logo.png
+  favicon: assets/images/logo.ico
+
   features:
     - content.code.copy # 启动复制按钮
     - header.autohide
@@ -15,14 +17,15 @@ theme:
     - toc.follow
     - content.footnote.tooltips
     - search.suggest
-    - search.highlight
+    # - search.highlight
+    - search.share
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: teal
       toggle:
-        icon: material/brightness-7
+        icon: material/toggle-switch
         name: Switch to dark mode
 
     # Palette toggle for dark mode
@@ -30,8 +33,10 @@ theme:
       scheme: slate
       primary: teal
       toggle:
-        icon: material/brightness-4
+        icon: material/toggle-switch-off-outline
         name: Switch to light mode
+
+comments: true
 
 nav:
   - 首页: index.md
@@ -62,9 +67,14 @@ hide:
   - toc
   - footer
 
+search:
+  exclude: true
+
+
 plugins:           
-  # - Search
+  - search
   # - privacy
+
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -72,7 +82,7 @@ markdown_extensions:
   - pymdownx.highlight:
       use_pygments: true
       linenums: true       # 显示行号
-      pygments_style: monokai # Pygments 主题
+      # pygments_style: monokai # Pygments 主题
   - pymdownx.inlinehilite   # 行内代码高亮
   - pymdownx.superfences   # 支持嵌套代码块[3,5](@ref)
   - pymdownx.critic
@@ -84,29 +94,48 @@ markdown_extensions:
   - pymdownx.details
   - footnotes
 
-copyright: >
-  Copyright &copy; 2016 - 2024 Martin Donath –
-  <a href="#__consent">Change cookie settings</a>
+# copyright: >
+#   Copyright &copy; 2016 - 2024 Martin Donath –
+#   <a href="#__consent">Change cookie settings</a>
 
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Vick-wan
-      
-  consent:
-    # title: Cookie consent
-    # description: >- 
-    #   We use cookies to recognize your repeated visits and preferences, as well
-    #   as to measure the effectiveness of our documentation and whether users
-    #   find what they're searching for. With your consent, you're helping us to
-    #   make our documentation better.
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/Vickwan666
 
-    # cookies:
-    #   analytics: Costom name
+  analytics: 
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
 
-    # actions:
-    #   - accept all
-    #   - manage it
+  # consent:
+  #   title: Cookie consent
+  #   description: >- 
+  #     We use cookies to recognize your repeated visits and preferences, as well
+  #     as to measure the effectiveness of our documentation and whether users
+  #     find what they're searching for. With your consent, you're helping us to
+  #     make our documentation better.
+
+  #   cookies:
+  #     analytics: Costom name
+
+  #   actions:
+  #     - accept
+  #     - manage
 
   # alternate:
   #   - name: English
@@ -118,10 +147,12 @@ extra:
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
-  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css
+  # - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js  # MathJax 3
   - https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js
+  - giscus.js
