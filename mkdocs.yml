@@ -61,6 +61,7 @@ nav:
     - 快读: Note/Imput&Output/快读.md
   - 指南: guides.md
   - 关于: about.md
+  - 测试: Note/test.md
 
 hide:
   - navigation
