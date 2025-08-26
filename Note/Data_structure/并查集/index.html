@@ -1476,7 +1476,7 @@
 
 
 
-<h1 id="_1">并查集</h1>
+<div><h1 id="_1">并查集</h1>
 <h2 id="_2">定义</h2>
 <p>并查集 (<span class="arithmatex">\(\rm DSU\)</span>) 是一种负责管理元素所在的区域的一种数据结构。并查集使用一个森林来实现，每个一树里的元素是属于同一个集合的，也就是说是同一个组。</p>
 <p>并查集主要有两个操作实现的，顾名思义就是 <strong>并</strong> 和 <strong>查</strong> 了：</p>
@@ -1526,9 +1526,9 @@ int findr(int x) {
 </code></pre></div></td></tr></table></div>
 <h3 id="_5">路劲压缩</h3>
 <p>这样会发现一个问题，如果我们的树长这个样子：</p>
-<p><img alt="image lost" src="../../../assets/images/DSU1.png" /></p>
+<p><img alt="image lost" src="../../../assets/images/DSU1.png"></p>
 <p>也就是说如果树是一条链，发现每次查询最下面的点会递归很多次才可以到根节点。既然树内的结构不影响根节点我们就可以把这个做成菊花图，如下：</p>
-<p><img alt="image lost" src="../../../assets/images/DSU2.png" /></p>
+<p><img alt="image lost" src="../../../assets/images/DSU2.png"></p>
 <p>=== "递归版本"</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1615,7 +1615,7 @@ int findr(int x) {
 <h3 id="_8">判环</h3>
 <p>在无向图中，并查集可以用来判断是否存在环（仅判断是否存在，并不能找到这一整个环）。如果在加这一条边之前，两个树已经用另外一条路径连接了（根节点相同），说明就有环。可以参考下图来辅助理解：
 （红色边使得 <span class="arithmatex">\(u\)</span> 已经有另一条路径可以到达 <span class="arithmatex">\(v\)</span>）
-<img alt="image lost" src="../../../assets/images/DSU3.png" /></p>
+<img alt="image lost" src="../../../assets/images/DSU3.png"></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1661,7 +1661,7 @@ int findr(int x) {
 </li>
 </ul>
 <h3 id="_13">带权并查集</h3>
-<h3 id="_14">扩展域并查集</h3>
+<h3 id="_14">扩展域并查集</h3></div>
 
 
 
@@ -1858,8 +1858,6 @@ int findr(int x) {
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../../js/giscus-theme.js"></script>
       
     
   </body>

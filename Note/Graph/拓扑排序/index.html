@@ -1630,7 +1630,7 @@
 
   <h1>拓扑排序</h1>
 
-<p>拓扑排序 <span class="arithmatex">\({\rm (Topological~sorting)}\)</span> 是给一个有向无环图也就是 <span class="arithmatex">\(\rm DAG\)</span> 所有的点进行一个排序。假设在一个 <code>DAG</code> 里有两个点 <code>u</code>，<code>v</code> 使得有一条有边，则称 <code>v</code> 依赖于 <code>u</code> 。拓扑排序的目标是将所有点按照某一个顺序排序，使得排在后面的点不再被依赖于前面的点。</p>
+<div><p>拓扑排序 <span class="arithmatex">\({\rm (Topological~sorting)}\)</span> 是给一个有向无环图也就是 <span class="arithmatex">\(\rm DAG\)</span> 所有的点进行一个排序。假设在一个 <code>DAG</code> 里有两个点 <code>u</code>，<code>v</code> 使得有一条有边，则称 <code>v</code> 依赖于 <code>u</code> 。拓扑排序的目标是将所有点按照某一个顺序排序，使得排在后面的点不再被依赖于前面的点。</p>
 <h2 id="khan">Khan 算法</h2>
 <h3 id="_1">观察</h3>
 <h4 id="dag">DAG中的拓扑序列</h4>
@@ -1642,7 +1642,7 @@
 我们发现依次访问的顺序就是拓扑排序序列。</p>
 <h4 id="_2">有向图（可能有环）</h4>
 <p>如果是一个有向图（可能有环）会发生什么事情呢？我们分析下面的例子：
-<img alt="image lost" src="../../../assets/images/topological_sorting1.png" /></p>
+<img alt="image lost" src="../../../assets/images/topological_sorting1.png"></p>
 <p>我们可以发现下面的例子进行到第 0 步时入度都不为 0，直接结束了，如果拓扑排序结束而且还有点没有被访问，那就说明这个图有环。</p>
 <h3 id="_3">总结</h3>
 <h4 id="_4">拓扑排序序列</h4>
@@ -1651,7 +1651,7 @@
 <p>如果在拓扑排序某一步结束了，而且还有点没被访问，说明此图有环。</p>
 <h3 id="code">Code</h3>
 <p>先存所有一开始入度为0的点，放入一个队列 <code>q</code> 里。然后一次取出入度为 <code>0</code> 的点也就是<code>u</code>，删去依赖于<code>u</code>的点<code>v</code>与点 <code>u</code>的边使得 <code>v</code>的入度 <code>-1</code>。如果 <code>v</code> 的入度为 <code>0</code> ，加入队列 <code>q</code> 并重复此操作。
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1710,7 +1710,7 @@
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">topseq</span><span class="p">;</span><span class="w"> </span><span class="c1">// 返回拓扑排序序列</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h2 id="dp">拓扑排序 + DP</h2>
 <p>拓扑排序是有一个特定的便利顺序的，所以我们可以想到在上面进行 DP 的转移。</p>
 <h3 id="_6">例题题解</h3>
@@ -1725,7 +1725,7 @@
 <p>以下是拓扑排序的经典简单的题目：
 - <a href="https://www.luogu.com.cn/problem/B3644" target="_blank">B3644 【模板】拓扑排序/家谱树）</a>
 - <a href="https://www.luogu.com.cn/problem/P4017" target="_blank">P4017 最大食物链计数</a>
-- <a href="https://www.luogu.com.cn/problem/P1347" target="_blank" >P1347 排序</a></p>
+- <a href="https://www.luogu.com.cn/problem/P1347" target="_blank">P1347 排序</a></p></div>
 
 
 
@@ -1922,8 +1922,6 @@
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../../js/giscus-theme.js"></script>
       
     
   </body>

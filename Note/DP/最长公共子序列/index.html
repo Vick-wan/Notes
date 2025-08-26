@@ -1472,7 +1472,7 @@
 
   <h1>最长公共子序列</h1>
 
-<p>最长公共子序列 <span class="arithmatex">\(\rm Least~Common~Subsequence\)</span> 简称 <span class="arithmatex">\(\rm LCS\)</span> 。指两个序列中（数字， 字符等），两个共有的最长子序列。如：<code>handsome</code> 和 <code>sometime</code> 的 <span class="arithmatex">\(\rm LCS\)</span> 的长度就是 <span class="arithmatex">\(4\)</span>，因为最长的共有子序列之一是 <code>some</code>。</p>
+<div><p>最长公共子序列 <span class="arithmatex">\(\rm Least~Common~Subsequence\)</span> 简称 <span class="arithmatex">\(\rm LCS\)</span> 。指两个序列中（数字， 字符等），两个共有的最长子序列。如：<code>handsome</code> 和 <code>sometime</code> 的 <span class="arithmatex">\(\rm LCS\)</span> 的长度就是 <span class="arithmatex">\(4\)</span>，因为最长的共有子序列之一是 <code>some</code>。</p>
 <h2 id="_1">思路</h2>
 <p>求最长公共子序列我们可以像 <span class="arithmatex">\(\rm DP\)</span> 一样考虑每一种情况。假设现在有两个字符串，<span class="arithmatex">\(a\)</span> 和 <span class="arithmatex">\(b\)</span>。假设当前枚举到了 <span class="arithmatex">\(a\)</span> 的第 <span class="arithmatex">\(i\)</span> 位和 <span class="arithmatex">\(b\)</span> 的第 <span class="arithmatex">\(j\)</span> 位。</p>
 <p>我们可以定义一个状态：<span class="arithmatex">\(dp_{i, j}\)</span> 代表当前进行到字符串 <span class="arithmatex">\(a\)</span> 的第 <span class="arithmatex">\(i\)</span> 位，和字符串 <span class="arithmatex">\(b\)</span> 的第 <span class="arithmatex">\(j\)</span> 位时的最长公共子序列。 </p>
@@ -1501,7 +1501,7 @@ dp_{i, j - 1}
 \]</div>
 <h2 id="code">Code</h2>
 <p>下面是 <span class="arithmatex">\(\rm LCS\)</span> 的一个基本模板：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1512,7 +1512,7 @@ dp_{i, j - 1}
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h2 id="_3">例题</h2>
 <p>下面是关于最长公共子序列的题目：</p>
 <ol>
@@ -1565,7 +1565,7 @@ dp_{i - 1, j, 1} + cal\_dis(\text两点之间的距离)
 </ol>
 <h4 id="code_1">Code</h4>
 <p>下面是关于这道题的参考代码：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1644,11 +1644,11 @@ dp_{i - 1, j, 1} + cal\_dis(\text两点之间的距离)
 <span class="w">        </span><span class="p">}</span><span class="w">  </span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">H</span><span class="p">][</span><span class="n">G</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">H</span><span class="p">][</span><span class="n">G</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div></div>
 
 
 
@@ -1845,8 +1845,6 @@ dp_{i - 1, j, 1} + cal\_dis(\text两点之间的距离)
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../../js/giscus-theme.js"></script>
       
     
   </body>

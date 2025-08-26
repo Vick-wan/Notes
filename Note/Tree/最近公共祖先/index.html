@@ -1560,7 +1560,7 @@
 
 
 
-<h1 id="_1">最近公共祖先</h1>
+<div><h1 id="_1">最近公共祖先</h1>
 <p>最近公共祖先 （Lowest Common Ancestor），简称 LCA，定义是树上的一些点向根方向的第一个相遇点。在这里， <span class="arithmatex">\(\rm LCA(u, v)\)</span> 表示树上两个点之间的最近公共祖先。如何快速求出 <span class="arithmatex">\(\rm LCA(u, v)\)</span>？这里会介绍 <span class="arithmatex">\(4\)</span> 种方法。</p>
 <h2 id="_2">朴素算法</h2>
 <h3 id="_3">思路</h3>
@@ -1568,7 +1568,7 @@
 <p>根据定义，我们很容易想到两个点同时向上移动（即：<code>u = fa[u], v = fa[v]</code>），但由于 <span class="arithmatex">\(dep_u\)</span> 可能不等于 <span class="arithmatex">\(dep_v\)</span>，这导致两个点可能不会同时到达点 <span class="arithmatex">\(w\)</span>。所以我们考虑先让深度更深的向上移动，直到 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span> 两点深度相同。这样向上同时移动就一定可以同时到达 <span class="arithmatex">\(w\)</span> 了。</p>
 <h3 id="code">Code</h3>
 <p>下面展示核心代码：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1597,11 +1597,11 @@
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">u</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fa</span><span class="p">[</span><span class="n">u</span><span class="p">],</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fa</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h3 id="_4">复杂度</h3>
 <p>预处理时间复杂度为 <span class="arithmatex">\(O(n)\)</span>，单次查询时间复杂度 <span class="arithmatex">\(O(n)\)</span>。</p>
 <p>空间复杂度为 <span class="arithmatex">\(O(n)\)</span>。</p>
-<hr />
+<hr>
 <h2 id="_5">倍增法</h2>
 <p>朴素算法在多次查询在时间复杂度上具有极大劣势，所以考虑使用倍增优化。</p>
 <h3 id="_6">思路</h3>
@@ -1611,7 +1611,7 @@
 <h3 id="code_1">Code</h3>
 <h4 id="_7">预处理的改变</h4>
 <p>预处理只修改了 <span class="arithmatex">\(fa\)</span> 数组，所以这里只将 <span class="arithmatex">\(fa\)</span> 数组的预处理，预处理 <span class="arithmatex">\(fa\)</span> 数组如下：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">fa</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
@@ -1619,19 +1619,19 @@
 <span class="w">    </span><span class="n">fa</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fa</span><span class="p">[</span><span class="n">fa</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]][</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-首先先初始化这个点的父亲所以 <span class="arithmatex">\(fa_{u, 0} = f\)</span>，然后我们想求出向上跳 <span class="arithmatex">\(2^i\)</span> 次方的祖先是谁可以使用 <span class="arithmatex">\(2^{i - 1} + 2^{i - 1}\)</span> 算出，所以 <span class="arithmatex">\(fa_{u, i} = fa_{fa_{u, i - 1}, - 1}\)</span>。</p>
+首先先初始化这个点的父亲所以 <span class="arithmatex">\(fa_{u, 0} = f\)</span>，然后我们想求出向上跳 <span class="arithmatex">\(2^i\)</span> 次方的祖先是谁可以使用 <span class="arithmatex">\(2^{i - 1} + 2^{i - 1}\)</span> 算出，所以 <span class="arithmatex">\(fa_{u, i} = fa_{fa_{u, i - 1}, - 1}\)</span>。
 <h4 id="rm-lca"><span class="arithmatex">\(\rm LCA\)</span> 函数的改变</h4>
 <p>朴素算法的 LCA 函数</p>
 <h3 id="_8">复杂度</h3>
-<hr />
+<hr>
 <h2 id="st">欧拉序 + ST表</h2>
-<hr />
+<hr>
 <h2 id="dfn-st">Dfn序 + ST表</h2>
 <h2 id="_9">例题</h2>
 <ul>
 <li><a href="https://www.luogu.com.cn/problem/P3379" target="_blank">P3379 【模板】最近公共祖先（LCA）</a></li>
 <li><a href="https://www.luogu.com.cn/problem/P10113" target="_blank">P10113 大量的工作沟通）</a></li>
-</ul>
+</ul></div>
 
 
 
@@ -1828,8 +1828,6 @@
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../../js/giscus-theme.js"></script>
       
     
   </body>

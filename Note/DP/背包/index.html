@@ -2064,10 +2064,10 @@
 
 
 
-<h1 id="_1">背包</h1>
+<div><h1 id="_1">背包</h1>
 <p>在C++中，​<strong>背包问题（Knapsack Problem）​</strong>​ 是一个经典的优化问题，主要用于在<strong>资源受限条件下进行价值最大化决策</strong>，核心思想是通过<strong>动态规划</strong>来实现的。</p>
 <p>为了更好的理解不同的背包之间的区别，在讲一种背包之前我们会先看一个例子。</p>
-<hr />
+<hr>
 <h2 id="01">01 背包</h2>
 <blockquote>
 <p>题目简介：有 <span class="arithmatex">\(N\)</span> 个物品和一个容量为 <span class="arithmatex">\(W\)</span> 的背包，每个物品价值为 <span class="arithmatex">\(v_i\)</span>， 重量为 <span class="arithmatex">\(c_i\)</span> 。在选出若干个物品在满足容量不超过 <span class="arithmatex">\(W\)</span> 时，求最大价值是多少？</p>
@@ -2076,7 +2076,7 @@
 <h3 id="_2">思路</h3>
 <p>我们可以定义一个状态：<span class="arithmatex">\(dp_{i, j}\)</span> 代表前 <span class="arithmatex">\(i\)</span> 个物品选恰好重量为 <span class="arithmatex">\(j\)</span> 时，可以获得的最大价值。那么决策显然为两个：选或不选。如果选择装入当前物品，那么我们需要让背包腾出至少 <span class="arithmatex">\(c_i\)</span> 个容量用于装这个物品，而价值则加上这个物品的价值，即 <span class="arithmatex">\(v_i\)</span>。如果不选择装入当前物品，那么就是同样的空间装前 <span class="arithmatex">\(i - 1\)</span> 个物品。</p>
 <p>我们可以画一个表格来直接的理解：</p>
-<p><img alt="image lost" src="../../../assets/images/knapsack1.png" /></p>
+<p><img alt="image lost" src="../../../assets/images/knapsack1.png"></p>
 <p>通过整理和表格我们发现状态转移如下：
 $$
 dp_{i, j} = \max \begin{cases}
@@ -2086,7 +2086,7 @@ dp_{i - 1, j - c_i} + v_i
 $$</p>
 <h3 id="code">Code</h3>
 <p>下面是一个 01背包在转移时的代码：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2095,7 +2095,7 @@ $$</p>
 <span class="w">        </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h3 id="_3">复杂度</h3>
 <p>这样的时间复杂度是 <span class="arithmatex">\(O(NW)\)</span>，空间复杂度为 <span class="arithmatex">\(O(NW)\)</span>。</p>
 <h3 id="_4">优化（滚动数组）</h3>
@@ -2104,7 +2104,7 @@ $$</p>
 <p>通过观察发现 <span class="arithmatex">\(dp_{i, j}\)</span> 只可能是从上一行而且不超过这一列转移过来。具体来说 <span class="arithmatex">\(dp_{i, j}\)</span> 只可能是从 <span class="arithmatex">\(dp_{u, v}\)</span> 转移过来且 <span class="arithmatex">\(1 \le u \le i - 1, \ 1 \le v \le j\)</span> 。所以我们可以把 <span class="arithmatex">\(N\)</span> 行压成 1 行，但是我们需要倒序来保证不把之前的覆盖。</p>
 <h4 id="code_1">Code</h4>
 <p>下面是一个使用了滚动数组的 01背包：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2113,13 +2113,13 @@ $$</p>
 <span class="w">        </span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h4 id="_6">复杂度</h4>
 <p>时间复杂度无法进行优化，即 <span class="arithmatex">\(O(NW)\)</span> ，空间复杂度为 <span class="arithmatex">\(O(W)\)</span></p>
 <h3 id="_7">总结</h3>
 <p>01 背包是一个只有两个决策（选或不选）的背包。</p>
 <p>状态转移：<strong>扣除花费获得价值</strong>。</p>
-<hr />
+<hr>
 <h2 id="_8">完全背包</h2>
 <blockquote>
 <p>题目简介：有 <span class="arithmatex">\(N\)</span> <strong>种</strong>物品和一个容量为 <span class="arithmatex">\(W\)</span> 的背包， <strong>每种物品可以拿任意个</strong>，每种物品价值为 <span class="arithmatex">\(v_i\)</span>， 重量为 <span class="arithmatex">\(c_i\)</span> 。在选出若干个物品在满足容量不超过 <span class="arithmatex">\(W\)</span> 时，求最大价值是多少？</p>
@@ -2127,7 +2127,7 @@ $$</p>
 <p>观察上面题目发现跟 01 背包有些区别，这次变成了有 <span class="arithmatex">\(W\)</span> 种，然后每种可以去任意个数。这种没有数量限制的题目我们统称为完全背包。</p>
 <h3 id="_9">思路</h3>
 <p>我们发现完全背包非常类似 01 背包。而不同的是，01 背包的决策是要或者不要，但是完全背包的决策是要 0 个， 要 1 个， <span class="arithmatex">\(\cdots\)</span>  要 <span class="arithmatex">\(\lfloor \frac{W}{c_i} \rfloor\)</span> 个。具体来说就是要 <code>k</code> 个且 <span class="arithmatex">\(0 \le k \le \lfloor \frac{W}{c_i} \rfloor\)</span> 。我们定义 <code>dp_{i, j}</code> 代表前 <code>i</code> 个物品选恰好重量为 <code>j</code> 时，可以获得的最大价值。我们可以画出下面的表格来辅助我们理解转移：</p>
-<p><img alt="image lost" src="../../../assets/images/knapsack2.png" /></p>
+<p><img alt="image lost" src="../../../assets/images/knapsack2.png"></p>
 <p>转移如下：
 $$
 dp_{i, j} = \max \begin{cases} 
@@ -2142,7 +2142,7 @@ k \times c_i \leq j
 $$</p>
 <h3 id="code_2">Code</h3>
 <p>下面为完全背包的转移时的代码
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2159,7 +2159,7 @@ $$</p>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h3 id="_10">复杂度</h3>
 <p>时间复杂度为 <span class="arithmatex">\(O(N{W} ^ {2})\)</span>。空间复杂度为 <span class="arithmatex">\(O(NW)\)</span></p>
 <h3 id="_11">优化</h3>
@@ -2167,7 +2167,7 @@ $$</p>
 <p>先观察 01 背包和完全背包在二维下转移的区别，发现一个是可以从 01 背包滚动数组后需要倒序是为了保证 <span class="arithmatex">\(dp_i\)</span> 是从状态 <span class="arithmatex">\(dp_{i - 1, j - c_i}\)</span> 转移而来，而完全背包是可以从自己这一行转移过来，所以 <span class="arithmatex">\(for\)</span> 循环需要顺序写来保证可以从 <span class="arithmatex">\(dp_{i, j - k \ c_i}\)</span>  转移而来。</p>
 <h4 id="code_3">Code</h4>
 <p>下面是滚动数组后的完全背包：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2176,11 +2176,11 @@ $$</p>
 <span class="w">        </span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h4 id="_13">复杂度</h4>
 <p>我们发现之前的双重循环的时间复杂度是 <span class="arithmatex">\(O(N{W}^{2})\)</span> 而，优化后的时间复杂度是 <span class="arithmatex">\(O(NW)\)</span> 。</p>
 <p>空间复杂度从 <span class="arithmatex">\(O(NW) \to O(W)\)</span> 。</p>
-<hr />
+<hr>
 <h2 id="_14">多重背包</h2>
 <blockquote>
 <p>题目简介：有 <span class="arithmatex">\(N\)</span> <strong>种</strong>物品和一个容量为 <span class="arithmatex">\(W\)</span> 的背包， 每种物品可以<strong>拿 <span class="arithmatex">\(m_i\)</span> 个</strong>，每种物品价值为 <span class="arithmatex">\(v_i\)</span>， 重量为 <span class="arithmatex">\(c_i\)</span> 。在选出若干个物品在满足容量不超过 <span class="arithmatex">\(W\)</span> 时，求最大价值是多少？</p>
@@ -2201,7 +2201,7 @@ k \times c_i \leq j
 \]</div>
 <h3 id="code_4">Code</h3>
 <p>下面是多重背包转移时的代码：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2216,9 +2216,9 @@ k \times c_i \leq j
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <p>当然，我们也可以使用滚动数组来优化我们空间复杂度：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2233,7 +2233,7 @@ k \times c_i \leq j
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h3 id="_16">复杂度</h3>
 <p>这个使用了三重循环，所以时间复杂度为 <span class="arithmatex">\(O(W \sum\limits_{i = 1}^{N}{m_i})\)</span> 。</p>
 <p>空间复杂度在没有使用滚动数组前为 <span class="arithmatex">\(O(NW)\)</span> ，使用滚动数组后为 <span class="arithmatex">\(O(W)\)</span> 。时间复杂度过高，显然是可以优化的。</p>
@@ -2250,24 +2250,24 @@ k \times c_i \leq j
 $$
 <strong>注：<span class="arithmatex">\(\text{Reamin}\)</span> 表示剩余部分。</strong></p>
 <p>我们也可以通过以下图片来助于我们理解，下面图片展示了把一个数拆成上面所说的格式。左下角为二的整数次幂，右下角是剩余的数量。</p>
-<p><img alt="" src="../../../assets/images/knapsack3.png" /></p>
+<p><img alt="" src="../../../assets/images/knapsack3.png"></p>
 <h4 id="code_5">Code</h4>
 <p>以下是一个使用了二进制优化的多重背包的核心代码，二进制优化将多重背包转为 01 背包，可以使用滚动数组。</p>
 <ol>
 <li>
 <p>定义变量
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">newn</span><span class="p">,</span><span class="w"> </span><span class="n">W</span><span class="p">;</span><span class="w"> </span><span class="c1">// newn 初始值为0</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">[</span><span class="n">MAXN</span><span class="p">],</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">MAXN</span><span class="p">],</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">newc</span><span class="p">[</span><span class="n">MAXN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">30</span><span class="p">],</span><span class="w"> </span><span class="n">newv</span><span class="p">[</span><span class="n">MAXN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">30</span><span class="p">];</span><span class="w"> </span><span class="c1">// 这里开题目要求的数量 * log(m[i]) 就可以了</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">MAXN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">30</span><span class="p">][</span><span class="n">MAXW</span><span class="p">];</span><span class="w"> </span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 </li>
 <li>
 <p>二进制优化 + 转移
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2318,11 +2318,11 @@ $$
 <span class="w">        </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">newc</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">newv</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 </li>
 </ol>
 <p>转移时也可以使用滚动数组：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2333,7 +2333,7 @@ $$
 <span class="w">        </span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">newc</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">newv</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h4 id="_19">复杂度</h4>
 <p>二进制优化大大降低了时间复杂度，从之前的 <span class="arithmatex">\(O(W \sum\limits_{i = 1}^{N}{\text{m}_i})\)</span> 优化到了 <span class="arithmatex">\(O(W \sum\limits_{i = 1}^{n}{\log{m_i}})\)</span> 。<del>时间是否可以进一步的优化呢？</del></p>
 <p>空间复杂度在未滚动数组时为 <span class="arithmatex">\(O(NW)\)</span>，在滚动数组后为 <span class="arithmatex">\(O(W)\)</span> 。</p>
@@ -2341,9 +2341,9 @@ $$
 <p>单调队列优化通过将动态规划的状态转移过程转化为滑动窗口最大值的一个优化方法。这可以使得我们的时间复杂度降低至 <span class="arithmatex">\(O(NW)\)</span> ，而进一步优化我们的代码。</p>
 <h4 id="_21">思路</h4>
 <p>按照朴素的多重背包我们可以推出这个点是由哪些点转移而来，如下图：
-<img alt="image lost" src="../../../assets/images/knapsack4.png" />
+<img alt="image lost" src="../../../assets/images/knapsack4.png">
 观察后发现 <span class="arithmatex">\(DP[j] = \max(DP[j - k \ w_i], DP[j - (k - 1) \ w_i], \cdots, DP[j - w_i])\)</span>  ，简化后就是 <span class="arithmatex">\(DP[j]\)</span> 从 <span class="arithmatex">\(DP[j - k \ w_i]\)</span> 转移而来。而我们可以观察到的一个重要 的性质就是 <span class="arithmatex">\(j\)</span> 和 <span class="arithmatex">\(j - k \ w_i\)</span> 同余，也就是 <span class="arithmatex">\(j\)</span> 和 <span class="arithmatex">\(k \ w_i\)</span> 同余。所以我们可以按照模 <span class="arithmatex">\(w_i\)</span> 进行分组，相同余数的分乘同一组，如下图（每一行一个组）：</p>
-<p><img alt="image lost" src="../../../assets/images/knapsack5.png" /></p>
+<p><img alt="image lost" src="../../../assets/images/knapsack5.png"></p>
 <p>我们发现组与组之间无转移关系，所以这个这个状态只可能是从同一组的某一个区间转移而来。假如 <span class="arithmatex">\(r + k \ w_i = j\)</span> ，其中 <span class="arithmatex">\(r\)</span> 代表 <span class="arithmatex">\(j\)</span> 模 <span class="arithmatex">\(w_i\)</span> 的余数。那么这个点的转移范围就是 <span class="arithmatex">\([r + (k - m_i) \ w_i, r + (k - 1) \ w_i]\)</span> 。<strong>注意物品数量有限，不能拿大于 <span class="arithmatex">\(m_i\)</span> 个物品。</strong></p>
 <p>在这里我们发现有区间的最值转移，所以我们容易想到使用单调队列。这样我们每个组都使用单调队列转移，就可以求出答案了。</p>
 <h4 id="code_6">Code</h4>
@@ -2405,7 +2405,7 @@ $$
 <h4 id="_22">复杂度</h4>
 <p>单调队列优化多重背包将多重背包的时间复杂度将至 <span class="arithmatex">\(O(NW)\)</span> 。</p>
 <p>空间复杂度在未使用滚动数组时为 <span class="arithmatex">\(O(NW)\)</span> ，使用滚动数组后为 <span class="arithmatex">\(O(W)\)</span> 。</p>
-<hr />
+<hr>
 <h2 id="_23">混合背包</h2>
 <blockquote>
 <p>题目简介：有 <span class="arithmatex">\(N\)</span> 种物品和一个容量为 <span class="arithmatex">\(W\)</span> 的背包， <strong>有些物品只有一个，有些有无限个，还有一些有 <span class="arithmatex">\(m_i\)</span> 个</strong>，每种物品价值为 <span class="arithmatex">\(v_i\)</span>， 重量为 <span class="arithmatex">\(c_i\)</span> 。在选出若干个物品在满足容量不超过 <span class="arithmatex">\(W\)</span> 时，求最大价值是多少？</p>
@@ -2415,7 +2415,7 @@ $$
 <p>混合背包结合了三种背包的问题，那么思路就是三种背包的代码混合起来，这个点是哪种背包就按照哪种背包做。</p>
 <h3 id="code_7">Code</h3>
 <p>下面是混合背包的核心代码：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2460,11 +2460,11 @@ $$
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h3 id="_25">复杂度</h3>
 <p>因为混合背包包含是三种背包的合体，那么时间复杂度就应该是三种背包里最大的内个，而三种背包的时间复杂度都是 <span class="arithmatex">\(O(NW)\)</span> ，所以混合背包的时间复杂度为 <span class="arithmatex">\(O(NW)\)</span> 。</p>
 <p>空间复杂度为<span class="arithmatex">\(O(W)\)</span> 。</p>
-<hr />
+<hr>
 <h2 id="_26">分组背包</h2>
 <blockquote>
 <p>题目简介：有 <span class="arithmatex">\(N\)</span> <strong>组</strong>物品和一个容量为 <span class="arithmatex">\(W\)</span> 的背包， <strong>每组包含 <span class="arithmatex">\(m_i\)</span> 个物品，每组要么选其中一个物品要么不选</strong>，每种物品价值为 <span class="arithmatex">\(v_i\)</span>， 重量为 <span class="arithmatex">\(c_i\)</span> 。在选出若干个物品在满足容量不超过 <span class="arithmatex">\(W\)</span> 时，求最大价值是多少？</p>
@@ -2474,7 +2474,7 @@ $$
 <p>思考后发现我们可以按照组转移，那么这组物品只可能从之前转移而来，所以我们枚举这组物品选哪个（也可以不选），转移既可。</p>
 <h3 id="code_8">Code</h3>
 <p>以下是分组背包的核心代码：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2487,9 +2487,9 @@ $$
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
 <h3 id="_28">复杂度</h3>
-<p>时间复杂度为 <span class="arithmatex">\(O(N^2W)\)</span>，空间复杂度在滚动数组后为 <span class="arithmatex">\(O(W)\)</span> 。</p>
+<p>时间复杂度为 <span class="arithmatex">\(O(N^2W)\)</span>，空间复杂度在滚动数组后为 <span class="arithmatex">\(O(W)\)</span> 。</p></div>
 
 
 
@@ -2686,8 +2686,6 @@ $$
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="../../../js/giscus-theme.js"></script>
       
     
   </body>
